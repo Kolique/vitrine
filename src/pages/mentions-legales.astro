@@ -1,0 +1,78 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+
+const title = "Mentions légales | AuditAccès";
+const description =
+  "Mentions légales du site AuditAccès : éditeur, hébergeur, propriété intellectuelle et données personnelles.";
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1rem">
+    <div class="wrap">
+      <p class="eyebrow">Informations</p>
+      <h1>Mentions légales</h1>
+    </div>
+  </div>
+
+  <section style="padding-top:0.5rem">
+    <div class="wrap prose">
+      <h2>Éditeur du site</h2>
+      <p>
+        Le site {SITE.name} est édité par&nbsp;:<br />
+        <strong>{SITE.auditeur.nom}</strong><br />
+        {SITE.legal.statut}<br />
+        SIRET&nbsp;: {SITE.legal.siret}<br />
+        {SITE.legal.adresse}<br />
+        {SITE.legal.tvaMention}
+      </p>
+      <p>
+        Directeur de la publication&nbsp;: {SITE.auditeur.nom}<br />
+        Contact&nbsp;: <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a> —
+        <a href={`tel:${SITE.auditeur.telephoneHref}`}>{SITE.auditeur.telephone}</a>
+      </p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par&nbsp;:<br />
+        <strong>Vercel Inc.</strong><br />
+        440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br />
+        Site&nbsp;: <a href="https://vercel.com">vercel.com</a>
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus de ce site (textes, structure, éléments
+        graphiques) est la propriété de son éditeur, sauf mention contraire.
+        Toute reproduction, même partielle, sans autorisation préalable est
+        interdite.
+      </p>
+
+      <h2>Données personnelles</h2>
+      <p>
+        Ce site ne dépose <strong>aucun cookie</strong> et n'utilise aucun
+        outil de mesure d'audience traitant des données personnelles. Les
+        seules données transmises sont celles que vous choisissez de
+        communiquer&nbsp;: par e-mail, par téléphone, ou via la prise de
+        rendez-vous en ligne (service Calendly, soumis à sa propre politique de
+        confidentialité). Ces informations servent uniquement à répondre à
+        votre demande et ne sont jamais cédées à des tiers.
+      </p>
+      <p>
+        Conformément au Règlement général sur la protection des données
+        (RGPD), vous disposez d'un droit d'accès, de rectification et de
+        suppression des données vous concernant. Pour l'exercer, écrivez à
+        <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a>.
+      </p>
+
+      <h2>Responsabilité</h2>
+      <p>
+        Les informations publiées sur ce site, notamment celles relatives à la
+        réglementation sur l'accessibilité numérique, sont fournies à titre
+        informatif. Elles ne constituent pas un conseil juridique et ne
+        sauraient se substituer à l'analyse d'un professionnel du droit pour
+        votre situation particulière.
+      </p>
+    </div>
+  </section>
+</Base>

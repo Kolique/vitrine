@@ -1,0 +1,140 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE, CTA_LABEL } from "../config";
+
+const title = "Offres & tarifs — Audit RGAA dès 2 900 € | AuditAccès";
+const description =
+  "Tarifs transparents : audit complet RGAA de 2 900 à 5 500 €, Pack Conformité à partir de 399 €/mois, monitoring 199 €/mois. Livrables réglementaires inclus, -30 % pour les premiers clients références.";
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1rem">
+    <div class="wrap">
+      <p class="eyebrow">Offres &amp; tarifs</p>
+      <h1>Des tarifs publics. Oui, c'est rare.</h1>
+      <p class="lead">
+        Un audit d'accessibilité est un achat sérieux&nbsp;: vous devez pouvoir
+        comparer avant même de décrocher votre téléphone. Voici mes prix,
+        affichés. Ils incluent <strong>tous les livrables réglementaires</strong>.
+      </p>
+    </div>
+  </div>
+
+  <section aria-labelledby="offres-titre" style="padding-top:1.5rem">
+    <div class="wrap">
+      <h2 id="offres-titre" class="visually-hidden">Les trois formules principales</h2>
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Audit complet RGAA</h3>
+          <p class="price">2&nbsp;900 – 5&nbsp;500&nbsp;€ <small>selon la taille du site</small></p>
+          <ul class="checklist">
+            <li><strong>2&nbsp;900&nbsp;€</strong> — petit site (8 à 10 pages auditées)</li>
+            <li><strong>3&nbsp;900&nbsp;€</strong> — e-commerce moyen (12 à 15 pages)</li>
+            <li><strong>4&nbsp;500 à 5&nbsp;500&nbsp;€</strong> — e-commerce complet (15 à 20 pages)</li>
+          </ul>
+          <p>
+            L'audit de référence&nbsp;: les 106 critères évalués page par page,
+            tous les livrables ci-dessous inclus.
+          </p>
+          <a class="btn btn-secondary" href={SITE.calendly}>{CTA_LABEL}</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="badge">Offre phare</span>
+          <h3>Pack Conformité</h3>
+          <p class="price">399 – 499&nbsp;€ <small>/ mois, pendant 12 mois</small></p>
+          <ul class="checklist">
+            <li>l'audit complet RGAA, intégralement</li>
+            <li>le monitoring mensuel de votre site</li>
+            <li>un contre-audit inclus après vos corrections</li>
+            <li>tous les livrables réglementaires</li>
+          </ul>
+          <p>
+            La conformité sans gros chèque à sortir&nbsp;: un abonnement
+            mensuel lissé sur l'année, et un accompagnement dans la durée.
+          </p>
+          <a class="btn btn-primary" href={SITE.calendly}>{CTA_LABEL}</a>
+        </div>
+
+        <div class="price-card">
+          <h3>Monitoring</h3>
+          <p class="price">199&nbsp;€ <small>/ mois</small></p>
+          <ul class="checklist">
+            <li>ré-analyse mensuelle complète du site</li>
+            <li>rapport d'évolution comparé au mois précédent</li>
+            <li>alerte en cas de régression après une mise en production</li>
+          </ul>
+          <p>
+            Votre site évolue chaque mois&nbsp;; sa conformité aussi. Le
+            monitoring vous évite de le découvrir lors d'un contrôle.
+          </p>
+          <a class="btn btn-secondary" href={SITE.calendly}>{CTA_LABEL}</a>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:2rem">
+        <p style="margin:0">
+          <strong>−30&nbsp;% pour mes premiers clients références.</strong>
+          Je lance mon activité&nbsp;: en échange d'un témoignage et de
+          l'autorisation de citer votre projet, je vous accorde 30&nbsp;% de
+          réduction sur l'ensemble de ces tarifs. Offre limitée aux premières
+          missions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" aria-labelledby="correction-titre">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div>
+          <h2 id="correction-titre">Correction accompagnée</h2>
+          <p class="price" style="font-family:var(--font-serif);font-size:1.8rem">
+            à partir de 550&nbsp;€ <small style="font-family:var(--font-sans);font-size:0.95rem;color:var(--ink-soft)">/ jour</small>
+          </p>
+          <p>
+            Votre équipe n'a pas le temps — ou pas l'habitude — de corriger les
+            écarts relevés&nbsp;? Je fournis les <strong>correctifs de code</strong>
+            (HTML, ARIA, CSS, comportements clavier) directement exploitables,
+            et je travaille avec vos développeurs ou votre agence jusqu'à la
+            levée des non-conformités.
+          </p>
+        </div>
+        <div>
+          <h2>Ce qui est toujours inclus</h2>
+          <ul class="checklist">
+            <li>grille des 106 critères RGAA 4.1.2, évaluée page par page</li>
+            <li>rapport d'audit signé par l'auditeur, opposable</li>
+            <li>déclaration d'accessibilité prête à publier</li>
+            <li>schéma pluriannuel de mise en accessibilité</li>
+            <li>plan d'actions priorisé pour l'année</li>
+            <li>restitution en visio avec vos équipes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="comment-titre">
+    <div class="wrap prose">
+      <h2 id="comment-titre">Comment se passe la facturation&nbsp;?</h2>
+      <p>
+        Simple&nbsp;: un devis signé avant tout démarrage, un acompte de
+        30&nbsp;%, le solde à la remise des livrables. Pour le Pack Conformité
+        et le monitoring, un prélèvement mensuel sans surprise. Aucun frais
+        caché, aucune option payante découverte en cours de route.
+      </p>
+      <p>
+        Le nombre de pages de l'échantillon d'audit est défini ensemble lors de
+        l'appel découverte, selon la structure réelle de votre site — c'est ce
+        qui détermine le tarif exact.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Un doute sur la formule adaptée à votre site ?"
+    text="En 20 minutes, on identifie votre périmètre, la formule pertinente et le calendrier réaliste. Gratuit et sans engagement."
+  />
+</Base>

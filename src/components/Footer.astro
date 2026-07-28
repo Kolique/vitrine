@@ -1,0 +1,49 @@
+---
+import { SITE } from "../config";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Audit<span style="color:#8fa0ec">Accès</span></p>
+        <p>
+          Audits d'accessibilité numérique RGAA&nbsp;4.1.2 par un auditeur
+          indépendant. Outil d'analyse propriétaire, vérification humaine des
+          106&nbsp;critères, rapport signé et opposable.
+        </p>
+        <p>
+          {SITE.auditeur.region}<br />
+          <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a><br />
+          <a href={`tel:${SITE.auditeur.telephoneHref}`}>{SITE.auditeur.telephone}</a>
+        </p>
+      </div>
+      <nav aria-label="Navigation de pied de page">
+        <h2>Le site</h2>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/offres/">Offres &amp; tarifs</a></li>
+          <li><a href="/methode/">Méthode</a></li>
+          <li><a href="/conseils/">Conseils</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/a-propos/">À propos</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Informations légales">
+        <h2>Informations</h2>
+        <ul>
+          <li><a href="/mentions-legales/">Mentions légales</a></li>
+          <li>
+            <a href="/accessibilite/">Accessibilité&nbsp;: totalement conforme</a>
+          </li>
+          <li><a href="/sitemap-index.xml">Plan du site (sitemap)</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© {year} {SITE.name} — {SITE.auditeur.nom}. Tous droits réservés.</p>
+      <p>Ce site est sa propre démonstration&nbsp;: conforme RGAA&nbsp;4.1.2.</p>
+    </div>
+  </div>
+</footer>

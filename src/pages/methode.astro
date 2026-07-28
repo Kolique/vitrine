@@ -1,0 +1,143 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE } from "../config";
+
+const title = "Méthode d'audit RGAA en 6 étapes — outil + vérification humaine | AuditAccès";
+const description =
+  "Ma méthode d'audit RGAA 4.1.2 : analyse automatisée propriétaire, jugements assistés par IA, puis vérification humaine systématique au clavier, au lecteur d'écran et au zoom. Aucun critère conforme sans preuve.";
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1.5rem">
+    <div class="wrap">
+      <p class="eyebrow">Méthode</p>
+      <h1>L'outil dégrossit. L'humain décide. La signature engage.</h1>
+      <p class="lead">
+        Un audit RGAA sérieux ne peut pas être 100&nbsp;% automatique&nbsp;:
+        les outils ne détectent qu'une partie des problèmes d'accessibilité.
+        Ma méthode combine le meilleur des deux&nbsp;— la puissance d'un moteur
+        d'analyse que j'ai développé, et le jugement d'un auditeur qui vérifie
+        <strong> chacun des 106 critères</strong>.
+      </p>
+    </div>
+  </div>
+
+  <section aria-labelledby="etapes-titre" style="padding-top:1.5rem">
+    <div class="wrap">
+      <h2 id="etapes-titre" class="visually-hidden">Les six étapes de l'audit</h2>
+      <div class="prose">
+        <ol class="steps">
+          <li>
+            <h3>Analyse automatisée</h3>
+            <p>
+              Mon moteur d'audit propriétaire parcourt l'échantillon de pages
+              défini ensemble. Il mesure ce qui est mesurable&nbsp;:
+              contrastes, structure des titres, attributs des images et des
+              formulaires, intitulés de liens, code des composants. En quelques
+              heures, il produit une première cartographie exhaustive des
+              écarts détectables par la machine.
+            </p>
+          </li>
+          <li>
+            <h3>Jugements assistés par IA</h3>
+            <p>
+              Pour les critères qui demandent une appréciation — une
+              alternative d'image est-elle pertinente&nbsp;? un intitulé
+              est-il explicite&nbsp;? — je m'appuie sur une assistance par IA
+              pour préparer des jugements documentés. C'est un accélérateur,
+              jamais un décideur&nbsp;: chaque proposition passe à l'étape
+              suivante.
+            </p>
+          </li>
+          <li>
+            <h3>Vérification humaine systématique</h3>
+            <p>
+              Je reprends chaque page de l'échantillon dans les conditions
+              réelles d'utilisation&nbsp;: navigation complète
+              <strong> au clavier</strong>, parcours au
+              <strong> lecteur d'écran</strong> (NVDA, VoiceOver), lecture avec
+              un <strong>zoom à 200&nbsp;%</strong>. C'est l'étape la plus
+              longue, et la plus importante&nbsp;: c'est elle qui fait la
+              différence entre un scan automatique et un audit.
+            </p>
+          </li>
+          <li>
+            <h3>Consolidation</h3>
+            <p>
+              Je consolide l'ensemble dans la grille RGAA&nbsp;: chaque
+              critère reçoit son statut — conforme, non conforme, non
+              applicable — page par page, avec la preuve associée (capture,
+              extrait de code, description du constat). Le taux de conformité
+              global de votre site en découle mathématiquement.
+            </p>
+          </li>
+          <li>
+            <h3>Livrables</h3>
+            <p>
+              Je rédige le rapport d'audit que je signe, la déclaration
+              d'accessibilité prête à publier, le schéma pluriannuel et le
+              plan d'actions priorisé de l'année. Des documents faits pour
+              être utilisés, pas pour dormir dans un dossier.
+            </p>
+          </li>
+          <li>
+            <h3>Restitution</h3>
+            <p>
+              Une session en visio avec vos équipes&nbsp;: je présente les
+              résultats, je montre les problèmes en conditions réelles et je
+              réponds aux questions des développeurs. Vous repartez en
+              sachant exactement quoi corriger, dans quel ordre, et pourquoi.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <blockquote class="pull-quote">
+        <p style="margin:0">
+          «&nbsp;Aucun critère n'est déclaré conforme sans preuve. Le rapport
+          porte ma signature&nbsp;: si je l'écris, c'est que je l'ai
+          vérifié.&nbsp;»
+        </p>
+        <footer>{SITE.auditeur.nom}, auditeur accessibilité indépendant</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section-alt" aria-labelledby="pourquoi-titre">
+    <div class="wrap">
+      <h2 id="pourquoi-titre">Pourquoi cette méthode&nbsp;?</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Parce que les outils seuls ne suffisent pas</h3>
+          <p>
+            Les analyses automatiques ne couvrent qu'une partie des critères
+            RGAA. Se contenter d'un score d'outil, c'est passer à côté de
+            l'essentiel — et le découvrir au pire moment.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Parce que votre temps compte</h3>
+          <p>
+            L'automatisation du travail répétitif me permet de concentrer mes
+            journées sur la vérification à forte valeur. C'est ce qui rend mes
+            tarifs possibles sans rogner sur la rigueur.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Parce qu'un audit engage</h3>
+          <p>
+            Votre déclaration d'accessibilité s'appuiera sur ce rapport. Il
+            doit tenir face à un contrôle. C'est pour cela que je signe
+            personnellement chaque audit que je livre.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Envie de voir la méthode appliquée à votre site ?"
+    text="Lors de l'appel découverte, je regarde votre site en direct et je vous montre deux ou trois constats concrets. Vous saurez tout de suite à quoi vous attendre."
+  />
+</Base>
