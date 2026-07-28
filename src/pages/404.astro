@@ -1,0 +1,25 @@
+---
+import Base from "../layouts/Base.astro";
+
+const title = "Page introuvable (erreur 404) | AuditAccès";
+const description = "La page demandée n'existe pas ou a été déplacée.";
+---
+
+<Base title={title} description={description}>
+  <section>
+    <div class="wrap prose">
+      <p class="eyebrow">Erreur 404</p>
+      <h1>Cette page est introuvable</h1>
+      <p class="lead">
+        La page que vous cherchez n'existe pas ou a été déplacée. Rien de
+        grave&nbsp;: voici les accès directs.
+      </p>
+      <ul>
+        <li><a href="/">Retour à l'accueil</a></li>
+        <li><a href="/offres/">Offres &amp; tarifs</a></li>
+        <li><a href="/conseils/">Conseils</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </section>
+</Base>

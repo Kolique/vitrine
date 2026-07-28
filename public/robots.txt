@@ -1,0 +1,6 @@
+# AuditAccès — robots.txt
+User-agent: *
+Allow: /
+
+# ⚠️ PLACEHOLDER : remplacez par votre vrai domaine
+Sitemap: https://www.auditacces.fr/sitemap-index.xml

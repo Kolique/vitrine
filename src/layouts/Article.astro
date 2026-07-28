@@ -1,0 +1,59 @@
+---
+import Base from "./Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE } from "../config";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Titre H1 affiché (peut différer légèrement du <title>) */
+  heading: string;
+  datePublished: string; // format ISO : 2026-07-28
+  dateDisplay: string; // format humain : 28 juillet 2026
+  readingTime: string; // ex. "4 min de lecture"
+}
+
+const { title, description, heading, datePublished, dateDisplay, readingTime } =
+  Astro.props;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: heading,
+  description,
+  datePublished,
+  inLanguage: "fr-FR",
+  author: {
+    "@type": "Person",
+    name: SITE.auditeur.nom,
+    jobTitle: "Auditeur en accessibilité numérique",
+  },
+  publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+});
+---
+
+<Base title={title} description={description} ogType="article" jsonLd={jsonLd}>
+  <article>
+    <header class="article-header">
+      <div class="wrap">
+        <p class="eyebrow">Conseils</p>
+        <h1>{heading}</h1>
+        <p class="article-meta">
+          Publié le <time datetime={datePublished}>{dateDisplay}</time> ·
+          {readingTime} · Par {SITE.auditeur.nom}, auditeur RGAA indépendant
+        </p>
+      </div>
+    </header>
+    <div class="wrap">
+      <div class="article-body">
+        <slot />
+        <hr class="rule" />
+        <p>
+          <a href="/conseils/">← Tous les conseils</a>
+        </p>
+      </div>
+    </div>
+  </article>
+  <CtaBand />
+</Base>

@@ -1,0 +1,65 @@
+---
+import Base from "../../layouts/Base.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const title = "Conseils — comprendre l'accessibilité numérique et le RGAA | AuditAccès";
+const description =
+  "Guides clairs sur l'obligation d'accessibilité : qui est concerné, combien coûte un audit RGAA, la déclaration d'accessibilité, le référentiel RGAA expliqué simplement.";
+
+const articles = [
+  {
+    href: "/conseils/obligation-accessibilite-e-commerce/",
+    title: "Obligation d'accessibilité des sites e-commerce en 2025",
+    excerpt:
+      "Depuis le 28 juin 2025, la vente en ligne aux particuliers est soumise à l'obligation d'accessibilité. Qui est concerné, quels textes, quels risques, par où commencer.",
+  },
+  {
+    href: "/conseils/combien-coute-un-audit-rgaa/",
+    title: "Combien coûte un audit RGAA ?",
+    excerpt:
+      "De 2 900 € chez un indépendant à 8 000 € en cabinet : ce qui explique les écarts de prix, ce qu'un audit doit inclure, et comment éviter de payer deux fois.",
+  },
+  {
+    href: "/conseils/declaration-accessibilite-obligatoire/",
+    title: "La déclaration d'accessibilité est-elle obligatoire ?",
+    excerpt:
+      "Qui doit publier une déclaration d'accessibilité, ce qu'elle doit contenir, ce qu'on risque sans elle — et pourquoi elle ne s'improvise pas sans audit.",
+  },
+  {
+    href: "/conseils/rgaa-c-est-quoi-qui-est-concerne/",
+    title: "RGAA : c'est quoi, et qui est concerné ?",
+    excerpt:
+      "Le Référentiel général d'amélioration de l'accessibilité expliqué simplement : 106 critères, 13 thématiques, et les entreprises qui doivent s'y conformer.",
+  },
+];
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1.5rem">
+    <div class="wrap">
+      <p class="eyebrow">Conseils</p>
+      <h1>Comprendre vos obligations, sans jargon</h1>
+      <p class="lead">
+        Des articles courts et factuels pour répondre aux questions que se
+        posent les entreprises concernées par l'accessibilité numérique.
+      </p>
+    </div>
+  </div>
+
+  <section style="padding-top:1rem">
+    <div class="wrap">
+      <div class="grid grid-2">
+        {
+          articles.map((a) => (
+            <article class="article-card">
+              <h2><a href={a.href}>{a.title}</a></h2>
+              <p>{a.excerpt}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

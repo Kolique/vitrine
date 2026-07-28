@@ -1,0 +1,299 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE, CTA_LABEL } from "../config";
+
+const title = "AuditAccès — Audit d'accessibilité RGAA 4.1.2 par un auditeur indépendant";
+const description =
+  "Audit complet de votre site sur les 106 critères du RGAA 4.1.2 : rapport signé, déclaration d'accessibilité, plan d'actions. Un auditeur indépendant, des prix transparents à partir de 2 900 €.";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: SITE.name,
+  description:
+    "Audits d'accessibilité numérique RGAA 4.1.2 réalisés par un auditeur indépendant : analyse automatisée propriétaire et vérification humaine des 106 critères.",
+  url: SITE.url,
+  areaServed: "FR",
+  founder: { "@type": "Person", name: SITE.auditeur.nom },
+  priceRange: "€€",
+});
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Accessibilité numérique · RGAA 4.1.2</p>
+        <h1>
+          L'accessibilité de votre site n'est plus optionnelle. Votre budget,
+          lui, reste raisonnable.
+        </h1>
+        <p class="lead">
+          Depuis le <strong>28 juin 2025</strong>, de nombreuses entreprises
+          privées doivent rendre leurs services en ligne accessibles. J'audite
+          votre site sur les <strong>106 critères du RGAA 4.1.2</strong> et je
+          vous livre tout ce qu'exige la réglementation — au tarif d'un
+          indépendant, pas d'un cabinet.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={SITE.calendly}>{CTA_LABEL}</a>
+          <a class="btn btn-secondary" href="/offres/">Voir les offres et tarifs</a>
+        </div>
+        <p class="hero-note">
+          Appel découverte gratuit, sans engagement. Vous parlez directement à
+          l'auditeur qui réalisera votre audit.
+        </p>
+      </div>
+      <figure class="report-card" aria-hidden="true">
+        <div class="rc-head">
+          <span>Rapport d'audit RGAA</span>
+          <span>p. 12/74</span>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>1.1 — Images porteuses d'information</td>
+              <td class="rc-ok">Conforme</td>
+            </tr>
+            <tr>
+              <td>3.2 — Contraste des textes</td>
+              <td class="rc-ko">Non conforme</td>
+            </tr>
+            <tr>
+              <td>7.1 — Scripts compatibles</td>
+              <td class="rc-ok">Conforme</td>
+            </tr>
+            <tr>
+              <td>10.7 — Prise de focus visible</td>
+              <td class="rc-ko">Non conforme</td>
+            </tr>
+            <tr>
+              <td>12.6 — Zones de regroupement</td>
+              <td class="rc-ok">Conforme</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rc-sign">
+          <span>Vérifié critère par critère</span>
+          <span class="rc-signature">— l'auditeur</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <dl class="stats">
+      <div class="stat">
+        <dt><b>106 critères</b></dt>
+        <dd><span>vérifiés un par un, humainement. Aucun critère déclaré conforme sans preuve.</span></dd>
+      </div>
+      <div class="stat">
+        <dt><b>28 juin 2025</b></dt>
+        <dd><span>entrée en application de l'obligation d'accessibilité pour de nombreux services en ligne privés.</span></dd>
+      </div>
+      <div class="stat">
+        <dt><b>Dès 2 900 €</b></dt>
+        <dd><span>pour un audit complet, livrables réglementaires inclus. Deux à trois fois moins qu'un cabinet.</span></dd>
+      </div>
+    </dl>
+  </div>
+
+  <section aria-labelledby="concernes-titre">
+    <div class="wrap">
+      <p class="eyebrow">01 — Êtes-vous concerné&nbsp;?</p>
+      <h2 id="concernes-titre">Ce que dit la loi, sans dramatiser</h2>
+      <div class="grid grid-2">
+        <div>
+          <p>
+            La directive européenne 2019/882 (European Accessibility Act),
+            transposée en France par l'ordonnance n°&nbsp;2023-859, s'applique
+            depuis le <strong>28 juin 2025</strong>. Elle concerne les
+            entreprises de <strong>plus de 10 salariés</strong> ou de
+            <strong> plus de 2&nbsp;millions d'euros de chiffre d'affaires</strong>
+            qui vendent des services en ligne aux particuliers.
+          </p>
+          <p>Les secteurs visés en premier lieu&nbsp;:</p>
+          <ul class="checklist">
+            <li>e-commerce (toute vente en ligne aux consommateurs)</li>
+            <li>banque et services financiers</li>
+            <li>télécommunications</li>
+            <li>transport de passagers</li>
+            <li>livres numériques et liseuses</li>
+            <li>médias audiovisuels et streaming</li>
+          </ul>
+        </div>
+        <div>
+          <p>
+            Le référentiel technique applicable en France est le
+            <strong> RGAA&nbsp;4.1.2</strong> (Référentiel général d'amélioration
+            de l'accessibilité), qui compte 106 critères. Les contrôles de la
+            <strong> DGCCRF ont commencé</strong>.
+          </p>
+          <p>
+            Le secteur public et les entreprises de plus de
+            250&nbsp;millions d'euros de chiffre d'affaires ont des obligations
+            renforcées&nbsp;: publier une déclaration d'accessibilité et un
+            schéma pluriannuel de mise en accessibilité. Les sanctions prévues
+            peuvent atteindre <strong>50&nbsp;000&nbsp;€ par service en ligne</strong>.
+          </p>
+          <div class="note">
+            <p style="margin:0">
+              Pas de panique&nbsp;: la réglementation attend une démarche
+              sérieuse et documentée, pas la perfection du jour au lendemain.
+              C'est exactement ce qu'un audit permet d'engager.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" aria-labelledby="livrables-titre">
+    <div class="wrap">
+      <p class="eyebrow">02 — Ce que je vous livre</p>
+      <h2 id="livrables-titre">Tout ce qu'exige la réglementation, prêt à l'emploi</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>La grille des 106 critères</h3>
+          <p>
+            Chaque critère du RGAA 4.1.2 évalué page par page&nbsp;: conforme,
+            non conforme ou non applicable, avec la preuve à l'appui.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Le rapport d'audit signé</h3>
+          <p>
+            Un rapport opposable, signé par l'auditeur qui a réellement fait
+            les vérifications. C'est votre pièce maîtresse en cas de contrôle.
+          </p>
+        </div>
+        <div class="card">
+          <h3>La déclaration d'accessibilité</h3>
+          <p>
+            Rédigée et prête à publier sur votre site, conforme au modèle
+            attendu par l'administration.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Le schéma pluriannuel</h3>
+          <p>
+            Votre feuille de route de mise en accessibilité sur trois ans,
+            document attendu pour les obligations renforcées.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Le plan d'actions de l'année</h3>
+          <p>
+            Les corrections priorisées par impact et par effort, directement
+            exploitables par votre équipe ou votre agence.
+          </p>
+        </div>
+        <div class="card">
+          <h3>La restitution avec vos équipes</h3>
+          <p>
+            Une session de présentation des résultats, pour que développeurs,
+            designers et direction sachent exactement quoi faire.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="independant-titre">
+    <div class="wrap">
+      <p class="eyebrow">03 — Pourquoi un indépendant</p>
+      <h2 id="independant-titre">Le même sérieux qu'un cabinet, sans les frais de structure</h2>
+      <div class="grid grid-2">
+        <div>
+          <p>
+            Les cabinets d'audit facturent généralement entre
+            <strong>6&nbsp;000 et 8&nbsp;000&nbsp;€</strong> un audit RGAA
+            complet. Ce prix couvre des commerciaux, des chefs de projet, des
+            locaux — pas seulement l'audit.
+          </p>
+          <p>
+            Chez moi, il n'y a pas d'intermédiaire&nbsp;: vous travaillez
+            directement avec l'auditeur qui réalise <em>et</em> signe l'audit.
+            Mon moteur d'analyse automatisé, que j'ai développé, dégrossit le
+            travail répétitif&nbsp;; je consacre mon temps là où il a de la
+            valeur — la vérification humaine de chaque critère.
+          </p>
+          <p>
+            Résultat&nbsp;: le même niveau d'exigence, des livrables complets,
+            pour <strong>2 à 3 fois moins cher</strong>.
+          </p>
+        </div>
+        <div class="table-scroll">
+          <table class="data">
+            <caption>Comparaison cabinet classique / AuditAccès</caption>
+            <thead>
+              <tr>
+                <th scope="col">Critère</th>
+                <th scope="col">Cabinet</th>
+                <th scope="col">AuditAccès</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Audit complet RGAA</th>
+                <td>6&nbsp;000 – 8&nbsp;000&nbsp;€</td>
+                <td>2&nbsp;900 – 5&nbsp;500&nbsp;€</td>
+              </tr>
+              <tr>
+                <th scope="row">Votre interlocuteur</th>
+                <td>Chef de projet</td>
+                <td>L'auditeur lui-même</td>
+              </tr>
+              <tr>
+                <th scope="row">Vérification humaine des 106 critères</th>
+                <td>Oui</td>
+                <td>Oui, systématique</td>
+              </tr>
+              <tr>
+                <th scope="row">Tarifs publiés</th>
+                <td>Sur devis</td>
+                <td>Affichés sur ce site</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" aria-labelledby="methode-titre">
+    <div class="wrap">
+      <p class="eyebrow">04 — La méthode</p>
+      <h2 id="methode-titre">Automatiser le répétitif, vérifier l'essentiel à la main</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Mon moteur d'audit analyse</h3>
+          <p>
+            Un outil propriétaire parcourt votre site et détecte les écarts
+            mesurables&nbsp;: contrastes, structure, attributs, formulaires.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Je vérifie humainement</h3>
+          <p>
+            Navigation au clavier, lecteur d'écran, zoom 200&nbsp;%&nbsp;:
+            chaque critère est contrôlé par un humain. Sans exception.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Je signe le résultat</h3>
+          <p>
+            Aucun critère n'est déclaré conforme sans preuve. C'est ma
+            signature qui engage — c'est aussi ma réputation.
+          </p>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem">
+        <a href="/methode/">Découvrir la méthode en 6 étapes →</a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

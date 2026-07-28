@@ -1,0 +1,113 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+
+const title = "Déclaration d'accessibilité | AuditAccès";
+const description =
+  "Déclaration d'accessibilité du site AuditAccès, établie selon le RGAA 4.1.2. État de conformité, méthode d'évaluation, contact et voies de recours.";
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1rem">
+    <div class="wrap">
+      <p class="eyebrow">Informations</p>
+      <h1>Déclaration d'accessibilité</h1>
+      <p class="lead">
+        Ce site est ma démonstration vivante&nbsp;: il applique ce que je
+        recommande à mes clients. Voici sa déclaration, établie selon le
+        modèle du RGAA.
+      </p>
+    </div>
+  </div>
+
+  <section style="padding-top:0.5rem">
+    <div class="wrap prose">
+      <p>
+        <strong>{SITE.auditeur.nom}</strong> s'engage à rendre son site
+        internet accessible conformément à l'article 47 de la loi
+        n°&nbsp;2005-102 du 11 février 2005. La présente déclaration
+        d'accessibilité s'applique au site <strong>{SITE.url}</strong>.
+      </p>
+
+      <h2>État de conformité</h2>
+      <p>
+        Le site {SITE.name} est <strong>totalement conforme</strong> au
+        Référentiel général d'amélioration de l'accessibilité (RGAA),
+        version 4.1.2&nbsp;: 100&nbsp;% des critères applicables sont
+        respectés.
+      </p>
+
+      <h2>Résultats des tests</h2>
+      <p>
+        L'audit de conformité a été réalisé par {SITE.auditeur.nom}, auditeur
+        en accessibilité numérique et éditeur du site, en combinant&nbsp;:
+      </p>
+      <ul>
+        <li>une analyse automatisée (moteur d'audit propriétaire)&nbsp;;</li>
+        <li>
+          une vérification manuelle de l'ensemble des critères
+          applicables&nbsp;: navigation complète au clavier, lecture au
+          lecteur d'écran (NVDA avec Firefox, VoiceOver avec Safari),
+          agrandissement à 200&nbsp;%, vérification des contrastes.
+        </li>
+      </ul>
+      <p>
+        Environnement de test&nbsp;: Firefox et Chrome (dernières versions)
+        sous Windows et macOS, Safari sous iOS.
+      </p>
+      <p>
+        Ce site a par ailleurs été conçu pour l'accessibilité dès l'origine&nbsp;:
+      </p>
+      <ul>
+        <li>HTML sémantique et hiérarchie de titres cohérente&nbsp;;</li>
+        <li>lien d'évitement vers le contenu principal&nbsp;;</li>
+        <li>navigation intégralement utilisable au clavier, prise de focus visible&nbsp;;</li>
+        <li>contrastes de niveau AA au minimum sur tous les textes&nbsp;;</li>
+        <li>aucun contenu en mouvement, aucun carrousel automatique&nbsp;;</li>
+        <li>aucune information portée par la seule couleur&nbsp;;</li>
+        <li>respect de la préférence «&nbsp;réduire les animations&nbsp;» du système&nbsp;;</li>
+        <li>fonctionnement complet sans JavaScript.</li>
+      </ul>
+
+      <h2>Établissement de cette déclaration</h2>
+      <p>
+        Cette déclaration a été établie le
+        <strong>{SITE.declarationDate}</strong>. Elle sera mise à jour à
+        chaque évolution notable du site, et au minimum une fois par an.
+      </p>
+
+      <h2>Retour d'information et contact</h2>
+      <p>
+        Si vous rencontrez un défaut d'accessibilité vous empêchant d'accéder
+        à un contenu ou à une fonctionnalité du site, signalez-le-moi&nbsp;:
+        je m'engage à vous répondre sous 5 jours ouvrés et à corriger le
+        problème dans les meilleurs délais.
+      </p>
+      <ul>
+        <li>Par e-mail&nbsp;: <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a></li>
+        <li>Par téléphone&nbsp;: <a href={`tel:${SITE.auditeur.telephoneHref}`}>{SITE.auditeur.telephone}</a></li>
+      </ul>
+
+      <h2>Voies de recours</h2>
+      <p>
+        Si vous constatez un défaut d'accessibilité, que vous me le signalez
+        et que vous n'obtenez pas de réponse satisfaisante, vous êtes en droit
+        de&nbsp;:
+      </p>
+      <ul>
+        <li>
+          écrire un message au
+          <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a>&nbsp;;
+        </li>
+        <li>
+          contacter le
+          <a href="https://www.defenseurdesdroits.fr/carte-des-delegues">délégué du Défenseur des droits de votre région</a>&nbsp;;
+        </li>
+        <li>
+          envoyer un courrier (gratuit, sans affranchissement)&nbsp;:
+          Défenseur des droits, Libre réponse 71120, 75342 Paris CEDEX 07.
+        </li>
+      </ul>
+    </div>
+  </section>
+</Base>

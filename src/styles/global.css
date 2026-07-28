@@ -1,0 +1,924 @@
+/* ==========================================================
+   AuditAccès — système de design
+   Identité : « le rapport d'audit » — papier chaud, encre,
+   un seul accent bleu profond, filets fins, typographie
+   éditoriale. Mobile d'abord. Contrastes AA/AAA vérifiés.
+   ========================================================== */
+
+:root {
+  /* Couleurs — toutes les combinaisons texte/fond respectent AA (la plupart AAA) */
+  --paper: #faf8f4;        /* fond principal, blanc cassé chaud */
+  --paper-2: #f1eee6;      /* fond de section alterné */
+  --ink: #1b1c20;          /* texte principal — contraste ≈ 15:1 sur papier */
+  --ink-soft: #45484f;     /* texte secondaire — ≈ 8:1 */
+  --bleu: #2138a6;         /* accent : liens, boutons — ≈ 9:1 */
+  --bleu-dark: #182a80;    /* survol */
+  --bleu-pale: #e6e9f7;    /* fonds discrets */
+  --terra: #94470d;        /* accent chaud, très ponctuel — ≈ 6:1 */
+  --line: #dcd8cc;         /* filets */
+  --line-strong: #b9b4a4;
+  --footer-bg: #17181c;
+  --footer-text: #d8d9dd;  /* ≈ 12:1 sur footer-bg */
+
+  --font-serif: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Public Sans Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --w-content: 71rem;
+  --w-prose: 44rem;
+  --radius: 8px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-variation-settings: "SOFT" 60, "WONK" 0;
+  font-weight: 560;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1.1em;
+}
+
+ul,
+ol {
+  padding-left: 1.4em;
+}
+
+li + li {
+  margin-top: 0.35em;
+}
+
+a {
+  color: var(--bleu);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  color: var(--bleu-dark);
+  text-decoration-thickness: 2px;
+}
+
+strong {
+  font-weight: 650;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus visible — exigence RGAA : net, contrasté, jamais supprimé */
+:focus-visible {
+  outline: 3px solid var(--bleu);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.on-dark :focus-visible,
+footer :focus-visible {
+  outline-color: #ffffff;
+}
+
+::selection {
+  background: var(--bleu-pale);
+}
+
+/* ---------- Lien d'évitement ---------- */
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -10rem;
+  z-index: 100;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+  color: #fff;
+}
+
+/* ---------- Structure ---------- */
+
+.wrap {
+  max-width: var(--w-content);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 48em) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+}
+
+.prose {
+  max-width: var(--w-prose);
+}
+
+section {
+  padding-block: 3rem;
+}
+
+@media (min-width: 48em) {
+  section {
+    padding-block: 4.5rem;
+  }
+}
+
+.section-alt {
+  background: var(--paper-2);
+  border-block: 1px solid var(--line);
+}
+
+/* Étiquette de section, façon cartouche de rapport : « 01 — Périmètre » */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 1.1rem;
+}
+
+.eyebrow::after {
+  content: "";
+  height: 1px;
+  flex: 0 1 6rem;
+  background: var(--line-strong);
+}
+
+.lead {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: var(--w-prose);
+}
+
+/* ---------- En-tête ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 620;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.brand .brand-dot {
+  color: var(--bleu);
+}
+
+.brand:hover {
+  color: var(--bleu-dark);
+}
+
+.site-nav {
+  margin-left: auto;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.35rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 0.45rem 0.7rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 550;
+  font-size: 0.98rem;
+  border-radius: 6px;
+}
+
+.site-nav a:hover {
+  background: var(--bleu-pale);
+  color: var(--bleu-dark);
+}
+
+.site-nav a.btn-primary {
+  color: #fff;
+  background: var(--bleu);
+}
+
+.site-nav a.btn-primary:hover {
+  color: #fff;
+  background: var(--bleu-dark);
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--bleu);
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.35em;
+}
+
+/* ---------- Boutons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 650;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--bleu);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--bleu-dark);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--bleu);
+  border-color: var(--bleu);
+}
+
+.btn-secondary:hover {
+  background: var(--bleu-pale);
+  color: var(--bleu-dark);
+}
+
+.btn-nav {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Héros ---------- */
+
+.hero {
+  padding-block: 3.5rem 3rem;
+}
+
+@media (min-width: 62em) {
+  .hero {
+    padding-block: 5rem 4.5rem;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+  }
+}
+
+.hero h1 {
+  margin-bottom: 0.5em;
+}
+
+.hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.8rem;
+  align-items: center;
+}
+
+.hero-note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+}
+
+/* Carte « extrait de rapport » — illustration maison en pur CSS */
+.report-card {
+  margin-top: 2.5rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgb(27 28 32 / 0.06), 0 12px 32px -12px rgb(27 28 32 / 0.18);
+  padding: 1.4rem 1.5rem 1.2rem;
+  font-size: 0.92rem;
+  max-width: 30rem;
+}
+
+@media (min-width: 62em) {
+  .report-card {
+    margin-top: 0;
+    transform: rotate(0.6deg);
+  }
+}
+
+.report-card .rc-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.9rem;
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+}
+
+.report-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.report-card td {
+  padding: 0.42rem 0;
+  border-bottom: 1px dashed var(--line);
+  vertical-align: top;
+}
+
+.report-card td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 650;
+}
+
+.rc-ok {
+  color: #1d6b32;
+}
+
+.rc-ko {
+  color: #a02c17;
+}
+
+.report-card .rc-sign {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+.report-card .rc-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+/* ---------- Bandeau chiffres clés ---------- */
+
+.stats {
+  display: grid;
+  gap: 1.5rem;
+  border-block: 1px solid var(--line);
+  padding-block: 2rem;
+}
+
+@media (min-width: 48em) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.stat b {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 580;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.stat span {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+
+/* ---------- Cartes / grilles ---------- */
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 48em) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.card h3 {
+  margin-bottom: 0.5em;
+}
+
+.card p:last-child,
+.card ul:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Listes à coche ---------- */
+
+.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 1.9em;
+  margin-bottom: 0.6em;
+}
+
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--bleu);
+}
+
+/* ---------- Tableaux ---------- */
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+}
+
+table.data caption {
+  text-align: left;
+  font-weight: 650;
+  padding-bottom: 0.7rem;
+}
+
+table.data th,
+table.data td {
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+table.data thead th {
+  border-bottom: 2px solid var(--ink);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Tarifs ---------- */
+
+.pricing {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 62em) {
+  .pricing {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.price-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  height: 100%;
+}
+
+.price-card .price {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 580;
+  line-height: 1.1;
+}
+
+.price-card .price small {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.price-card ul {
+  margin-block: 0.8rem 1.2rem;
+}
+
+.price-card .btn {
+  margin-top: auto;
+}
+
+.price-card.featured {
+  border: 2px solid var(--bleu);
+  box-shadow: 0 14px 40px -18px rgb(33 56 166 / 0.45);
+}
+
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--bleu);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 99px;
+  margin-bottom: 0.6rem;
+}
+
+.badge-soft {
+  background: var(--bleu-pale);
+  color: var(--bleu-dark);
+}
+
+/* ---------- Étapes de la méthode ---------- */
+
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+}
+
+.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 2.2rem 3.6rem;
+}
+
+.steps > li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: -0.1rem;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--terra);
+}
+
+.steps > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  top: 2.2rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: var(--line-strong);
+}
+
+.steps h3 {
+  margin-bottom: 0.3em;
+}
+
+.steps p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Citation signature ---------- */
+
+.pull-quote {
+  border-left: 4px solid var(--bleu);
+  background: #fff;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 1.5rem 1.75rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  line-height: 1.45;
+  max-width: 42rem;
+  margin-block: 2rem;
+}
+
+.pull-quote footer {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-top: 0.7rem;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  margin-bottom: 0.9rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  padding: 1.1rem 1.3rem;
+  font-weight: 650;
+  font-size: 1.05rem;
+  list-style-position: outside;
+}
+
+.faq-item summary:hover {
+  color: var(--bleu-dark);
+}
+
+.faq-item[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item .faq-body {
+  padding: 1rem 1.3rem 0.4rem;
+}
+
+/* ---------- Bandeau CTA ---------- */
+
+.cta-band {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 1.75rem;
+  text-align: center;
+}
+
+@media (min-width: 48em) {
+  .cta-band {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.cta-band h2 {
+  color: #fff;
+}
+
+.cta-band p {
+  color: #cfd0d6;
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.cta-band .btn-primary {
+  background: #fff;
+  color: var(--ink);
+  margin-top: 1rem;
+}
+
+.cta-band .btn-primary:hover {
+  background: var(--bleu-pale);
+  color: var(--bleu-dark);
+}
+
+.cta-band a:not(.btn) {
+  color: #fff;
+}
+
+/* ---------- Articles ---------- */
+
+.article-header {
+  padding-block: 3rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2.5rem;
+}
+
+.article-meta {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.article-body {
+  max-width: var(--w-prose);
+}
+
+.article-body h2 {
+  margin-top: 2em;
+}
+
+.article-body h3 {
+  margin-top: 1.6em;
+}
+
+.article-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card h2,
+.article-card h3 {
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  margin-bottom: 0.4em;
+}
+
+.article-card h2 a,
+.article-card h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.article-card h2 a:hover,
+.article-card h3 a:hover {
+  color: var(--bleu-dark);
+  text-decoration: underline;
+}
+
+.article-card p {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin-bottom: 0;
+}
+
+/* ---------- Pied de page ---------- */
+
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  margin-top: 4rem;
+  padding-block: 3rem 2rem;
+  font-size: 0.97rem;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 48em) {
+  .footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.site-footer h2 {
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 0.9rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #33353c;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  justify-content: space-between;
+}
+
+/* ---------- Divers ---------- */
+
+.note {
+  background: var(--bleu-pale);
+  border: 1px solid #c4cbea;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.98rem;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Texte présent pour les technologies d'assistance, masqué visuellement */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mt-0 { margin-top: 0; }
+.mb-2 { margin-bottom: 2rem; }
+
+hr.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: 2.5rem;
+}

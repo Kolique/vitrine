@@ -1,0 +1,93 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE } from "../config";
+
+const title = "À propos — un auditeur indépendant, un outil propriétaire | AuditAccès";
+const description =
+  "Auditeur indépendant en accessibilité numérique (RGAA 4.1.2). J'ai développé mon propre moteur d'audit et je vérifie humainement chaque critère. Vous travaillez directement avec la personne qui signe votre audit.";
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1.5rem">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">À propos</p>
+        <h1>La personne au bout du fil est celle qui signe votre audit</h1>
+        <p class="lead">
+          Je m'appelle <strong>{SITE.auditeur.nom}</strong>. Je suis auditeur
+          indépendant en accessibilité numérique, basé en
+          {SITE.auditeur.region}. J'interviens partout en France, en distanciel.
+        </p>
+      </div>
+      <div>
+        <!--
+          À REMPLACER : votre photo professionnelle.
+          Déposez le fichier dans /public/ (ex. /public/portrait.jpg)
+          puis remplacez ce bloc par :
+          <img src="/portrait.jpg" alt="Portrait de Prénom NOM, auditeur en accessibilité numérique" width="480" height="600" style="border-radius:8px;border:1px solid var(--line)" />
+        -->
+        <div
+          class="card center"
+          style="padding:3.5rem 1.5rem; color:var(--ink-soft)"
+        >
+          <p style="margin:0">
+            [ Votre photo professionnelle ici —<br />voir le commentaire dans le
+            code ]
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding-top:1.5rem" aria-labelledby="parcours-titre">
+    <div class="wrap prose">
+      <h2 id="parcours-titre">Pourquoi ce métier</h2>
+      <p>
+        L'accessibilité numérique est souvent traitée comme une case à cocher.
+        C'est pourtant très concret&nbsp;: derrière chaque critère du RGAA, il
+        y a des personnes qui, aujourd'hui, ne peuvent pas finaliser une
+        commande, lire un relevé ou réserver un billet sur des sites qui les
+        excluent sans le savoir.
+      </p>
+      <p>
+        Depuis le 28 juin 2025, la loi a rejoint le bon sens&nbsp;: rendre les
+        services en ligne accessibles n'est plus un choix pour de nombreuses
+        entreprises. Mon métier est de rendre ce passage obligé
+        <strong> utile, clair et abordable</strong>.
+      </p>
+
+      <h2>Ma façon de travailler</h2>
+      <ul class="checklist">
+        <li>
+          <strong>Un outil propriétaire.</strong> J'ai développé mon propre
+          moteur d'analyse automatisée. Il travaille vite sur ce qui est
+          mesurable, ce qui me laisse du temps pour ce qui ne l'est pas.
+        </li>
+        <li>
+          <strong>Une validation humaine systématique.</strong> Clavier,
+          lecteur d'écran, zoom&nbsp;: je vérifie moi-même chacun des 106
+          critères. Aucun statut «&nbsp;conforme&nbsp;» sans preuve.
+        </li>
+        <li>
+          <strong>Une indépendance totale.</strong> Je ne vends ni refonte, ni
+          CMS, ni contrat d'agence. Mon seul produit est un constat honnête et
+          exploitable — je n'ai aucun intérêt à noircir ou embellir le tableau.
+        </li>
+        <li>
+          <strong>Un engagement personnel.</strong> C'est ma signature sur le
+          rapport, et ma réputation à chaque mission.
+        </li>
+      </ul>
+
+      <h2>Me contacter</h2>
+      <ul>
+        <li>Par téléphone&nbsp;: <a href={`tel:${SITE.auditeur.telephoneHref}`}>{SITE.auditeur.telephone}</a></li>
+        <li>Par e-mail&nbsp;: <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a></li>
+        <li>Ou le plus simple&nbsp;: <a href={SITE.calendly}>réserver directement 20 minutes dans mon agenda</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

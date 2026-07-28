@@ -1,0 +1,86 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+
+const title = "FAQ — vos questions sur l'audit d'accessibilité RGAA | AuditAccès";
+const description =
+  "On verra plus tard ? Trop cher ? Votre agence s'en occupe ? Réponses factuelles aux questions les plus fréquentes sur l'obligation d'accessibilité et l'audit RGAA.";
+
+const faqs = [
+  {
+    q: "« On verra plus tard » — est-ce vraiment urgent ?",
+    a: `L'obligation est en vigueur depuis le 28 juin 2025 et les contrôles de la DGCCRF ont commencé. Surtout, la mise en conformité prend du temps : entre l'audit, les corrections par vos équipes et le contre-audit, il faut compter plusieurs mois. Attendre ne réduit pas le travail, cela réduit seulement votre marge de manœuvre. Commencer par un audit, c'est précisément ce qui permet de « voir plus tard » sereinement : vous savez où vous en êtes, vous avez un plan daté, et vous pouvez démontrer que la démarche est engagée.`,
+  },
+  {
+    q: "« Notre agence web s'en occupe » — pourquoi un auditeur externe ?",
+    a: `Tant mieux si votre agence intègre l'accessibilité : c'est le meilleur point de départ. Mais un principe simple demeure : on n'audite pas son propre travail. Un audit indépendant apporte un regard neuf, une évaluation critère par critère opposable, et un rapport signé par quelqu'un qui n'a aucun intérêt à minimiser les écarts. En pratique, je travaille très bien avec les agences : mon rapport leur sert de cahier des charges de correction, et le contre-audit valide leur travail.`,
+  },
+  {
+    q: "« C'est trop cher » — comment justifier ce budget ?",
+    a: `Un audit complet chez moi coûte entre 2 900 et 5 500 €, là où les cabinets facturent généralement 6 000 à 8 000 €. Le Pack Conformité lisse même ce coût en mensualités de 399 à 499 €. À mettre en face : les sanctions prévues par les textes peuvent atteindre 50 000 € par service en ligne pour les obligations renforcées, et un site inaccessible exclut une partie réelle de vos clients — les personnes en situation de handicap représentent plusieurs millions d'utilisateurs en France. L'accessibilité améliore en outre l'expérience de tous et souvent le référencement naturel.`,
+  },
+  {
+    q: "« On risque vraiment quelque chose ? »",
+    a: `Soyons factuels, sans dramatiser. Les textes prévoient des sanctions : jusqu'à 50 000 € par service en ligne pour les manquements aux obligations renforcées (déclaration d'accessibilité, schéma pluriannuel), et la DGCCRF a commencé ses contrôles auprès des entreprises concernées par l'ordonnance n° 2023-859. Personne ne peut vous dire si ou quand votre entreprise sera contrôlée, et je ne vous promettrai jamais une immunité juridique — personne ne le peut sérieusement. Ce que je constate : les entreprises qui ont un audit daté, un plan d'actions et une déclaration publiée sont en position de démontrer leur bonne foi. Celles qui n'ont rien ne le sont pas.`,
+  },
+  {
+    q: "Combien de temps dure un audit ?",
+    a: `Comptez deux à quatre semaines entre le lancement et la restitution, selon la taille de l'échantillon de pages. L'appel découverte permet de définir ce périmètre précisément et de vous donner une date de livraison ferme.`,
+  },
+  {
+    q: "Faut-il corriger 100 % des critères pour être en règle ?",
+    a: `Non. Le RGAA mesure un taux de conformité, et la réglementation attend une démarche sérieuse : audit, déclaration sincère, plan d'actions suivi. Une déclaration « partiellement conforme » avec un plan crédible est une situation normale et assumable. Ce qui pose problème, c'est l'absence totale de démarche — ou une déclaration de conformité qui ne repose sur rien.`,
+  },
+  {
+    q: "Mon site est petit, suis-je vraiment concerné ?",
+    a: `L'obligation issue de l'ordonnance n° 2023-859 vise les entreprises de plus de 10 salariés ou de plus de 2 M€ de chiffre d'affaires qui vendent des services en ligne aux particuliers. En dessous de ces seuils, il n'y a pas d'obligation directe à ce jour — mais vos clients grands comptes peuvent l'exiger contractuellement, et l'accessibilité reste un avantage concurrentiel réel. Lors de l'appel découverte, on vérifie ensemble, simplement, si vous êtes dans le champ d'application.`,
+  },
+  {
+    q: "Que se passe-t-il après l'audit ?",
+    a: `Vous recevez tous les livrables, puis vos équipes (ou votre agence, ou moi en correction accompagnée) corrigent selon le plan d'actions. Un contre-audit — inclus dans le Pack Conformité — mesure ensuite le nouveau taux de conformité et met à jour votre déclaration. Le monitoring mensuel permet enfin de maintenir le niveau atteint au fil de vos mises en production.`,
+  },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <div class="hero" style="padding-bottom:1.5rem">
+    <div class="wrap">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h1>Les questions qu'on me pose (et les objections aussi)</h1>
+      <p class="lead">
+        Des réponses directes et factuelles. Si la vôtre n'y est pas,
+        posez-la-moi lors d'un appel de 20 minutes — c'est fait pour ça.
+      </p>
+    </div>
+  </div>
+
+  <section style="padding-top:1rem">
+    <div class="wrap prose">
+      {
+        faqs.map((f) => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <div class="faq-body">
+              <p>{f.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="Une question qui n'est pas dans la liste ?"
+    text="Réservez un appel découverte : 20 minutes pour répondre à vos questions, regarder votre site et vous dire honnêtement si vous avez besoin de moi — ou pas."
+  />
+</Base>

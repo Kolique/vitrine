@@ -1,0 +1,109 @@
+---
+import Article from "../../layouts/Article.astro";
+import { SITE, CTA_LABEL } from "../../config";
+---
+
+<Article
+  title="RGAA : c'est quoi et qui est concerné ? | AuditAccès"
+  description="Le RGAA 4.1.2 expliqué simplement : 106 critères répartis en 13 thématiques, son lien avec les normes WCAG, et la liste des organisations qui doivent s'y conformer en France."
+  heading="RGAA&nbsp;: c'est quoi, et qui est concerné&nbsp;?"
+  datePublished="2026-07-15"
+  dateDisplay="15 juillet 2026"
+  readingTime="5 min de lecture"
+>
+  <p class="lead">
+    RGAA, WCAG, EAA, déclaration, schéma pluriannuel… le vocabulaire de
+    l'accessibilité numérique peut décourager. Voici l'essentiel, expliqué
+    sans jargon.
+  </p>
+
+  <h2>Le RGAA en une définition</h2>
+  <p>
+    Le <strong>RGAA</strong> — Référentiel général d'amélioration de
+    l'accessibilité — est le référentiel officiel français qui permet de
+    vérifier qu'un site ou une application web est accessible aux personnes
+    en situation de handicap. Sa version en vigueur est la
+    <strong> 4.1.2</strong>. Il traduit en méthode de contrôle concrète les
+    normes internationales WCAG (Web Content Accessibility Guidelines), au
+    niveau dit «&nbsp;double A&nbsp;» (AA).
+  </p>
+
+  <h2>Comment est-il structuré&nbsp;?</h2>
+  <p>
+    Le RGAA compte <strong>106 critères de contrôle</strong>, répartis en 13
+    thématiques qui couvrent tout ce qui compose une page web&nbsp;:
+  </p>
+  <ul>
+    <li>les images (alternatives textuelles pertinentes)&nbsp;;</li>
+    <li>les cadres, les couleurs et les contrastes&nbsp;;</li>
+    <li>le multimédia (sous-titres, transcriptions)&nbsp;;</li>
+    <li>les tableaux et les liens&nbsp;;</li>
+    <li>les scripts et composants interactifs&nbsp;;</li>
+    <li>la structuration de l'information et la présentation&nbsp;;</li>
+    <li>les formulaires&nbsp;;</li>
+    <li>la navigation (dont l'usage complet au clavier)&nbsp;;</li>
+    <li>la consultation (zoom, orientation, gestes).</li>
+  </ul>
+  <p>
+    Chaque critère s'évalue page par page, avec l'un de trois statuts&nbsp;:
+    conforme, non conforme ou non applicable. Le
+    <strong> taux de conformité</strong> du site en découle — c'est ce chiffre
+    qui figure ensuite dans la déclaration d'accessibilité.
+  </p>
+
+  <h2>Qui doit se conformer au RGAA&nbsp;?</h2>
+  <p>Deux grandes familles d'obligations coexistent en France&nbsp;:</p>
+  <ol>
+    <li>
+      <strong>Le secteur public et assimilé</strong>&nbsp;: administrations,
+      collectivités, établissements publics, ainsi que les entreprises de plus
+      de 250&nbsp;millions d'euros de chiffre d'affaires. Obligations
+      renforcées&nbsp;: conformité au RGAA, déclaration d'accessibilité
+      publiée, schéma pluriannuel. Les sanctions prévues atteignent
+      50&nbsp;000&nbsp;€ par service en ligne.
+    </li>
+    <li>
+      <strong>Les entreprises privées vendant des services en ligne aux
+      particuliers</strong>&nbsp;: depuis le <strong>28 juin 2025</strong>, en
+      application de la directive 2019/882 (European Accessibility Act,
+      transposée par l'ordonnance n°&nbsp;2023-859), les entreprises de plus
+      de 10 salariés ou de plus de 2&nbsp;M€ de chiffre d'affaires sont
+      concernées&nbsp;: e-commerce, banque, télécoms, transport, livres
+      numériques, streaming. Les contrôles de la DGCCRF ont commencé.
+    </li>
+  </ol>
+
+  <h2>Et si je suis en dessous des seuils&nbsp;?</h2>
+  <p>
+    Aucune obligation directe à ce jour — mais trois bonnes raisons de s'y
+    intéresser quand même&nbsp;: vos clients grands comptes peuvent exiger
+    contractuellement l'accessibilité de leurs prestataires&nbsp;; un site
+    accessible est utilisable par davantage de clients&nbsp;; et les bonnes
+    pratiques d'accessibilité (structure claire, textes alternatifs,
+    performance) rejoignent largement celles du référencement naturel.
+  </p>
+
+  <h2>Comment sait-on si un site est conforme&nbsp;?</h2>
+  <p>
+    Une seule réponse honnête&nbsp;: en l'auditant. Les outils automatiques ne
+    couvrent qu'une partie des 106 critères&nbsp;; le reste exige une
+    vérification humaine — navigation au clavier, lecteur d'écran, zoom.
+    C'est exactement <a href="/methode/">la méthode que j'applique</a>&nbsp;:
+    un moteur d'analyse propriétaire pour le mesurable, une vérification
+    humaine systématique pour tout le reste, et un rapport signé.
+  </p>
+
+  <h2>L'essentiel à retenir</h2>
+  <p>
+    Le RGAA 4.1.2 est la règle du jeu française de l'accessibilité
+    numérique&nbsp;: 106 critères, évalués page par page, aboutissant à un
+    taux de conformité. Depuis le 28 juin 2025, il ne concerne plus seulement
+    le secteur public mais une large part du commerce en ligne.
+  </p>
+  <p>
+    <strong>Vous voulez savoir où se situe votre site&nbsp;?</strong>
+    Réservez un appel découverte&nbsp;: en 20 minutes, je regarde votre site
+    en direct et je vous donne un premier avis concret.
+    <a href={SITE.calendly}>{CTA_LABEL}</a>.
+  </p>
+</Article>

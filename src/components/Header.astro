@@ -1,0 +1,42 @@
+---
+import { SITE, CTA_LABEL } from "../config";
+
+const path = Astro.url.pathname;
+const links = [
+  { href: "/offres/", label: "Offres & tarifs" },
+  { href: "/methode/", label: "Méthode" },
+  { href: "/conseils/", label: "Conseils" },
+  { href: "/faq/", label: "FAQ" },
+  { href: "/a-propos/", label: "À propos" },
+];
+
+/** Marque le lien courant, y compris pour les sous-pages (ex. /conseils/mon-article/) */
+const isCurrent = (href: string) =>
+  path === href || (href !== "/" && path.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label={`${SITE.name} — accueil`}>
+      Audit<span class="brand-dot">Accès</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={isCurrent(l.href) ? "page" : undefined}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a class="btn btn-primary btn-nav" href={SITE.calendly}>
+            {CTA_LABEL}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
