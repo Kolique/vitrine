@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Faisons le point en 20 minutes",
-  text = "Un appel gratuit, sans engagement. Vous repartez avec une première idée de votre niveau de conformité et des priorités — que l'on travaille ensemble ou non.",
+  title = "Parlons-en directement : 20 minutes, en visio",
+  text = "Un appel gratuit, sans engagement, avec l'auditeur lui-même. On regarde votre site, je vous présente les offres adaptées à votre situation et vous recevez un devis précis sous 48 h.",
 } = Astro.props;
 ---
 
@@ -17,7 +17,7 @@ const {
     <div class="cta-band on-dark">
       <h2 id="cta-titre">{title}</h2>
       <p>{text}</p>
-      <a class="btn btn-primary" href={SITE.calendly}>{CTA_LABEL}</a>
+      <a class="btn btn-primary" href="/reserver/">{CTA_LABEL}</a>
       <p style="margin-top:1rem;font-size:0.92rem">
         Vous préférez écrire&nbsp;?
         <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a>

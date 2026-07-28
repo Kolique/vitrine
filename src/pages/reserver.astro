@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config";
+
+const title = "Réserver un appel découverte de 20 minutes | AuditAccès";
+const description =
+  "Choisissez directement un créneau de 20 minutes avec l'auditeur : on regarde votre site ensemble, je vous présente les offres adaptées et vous recevez un devis précis sous 48 h.";
+
+// L'URL Calendly vient de src/config.ts — paramètres pour un rendu intégré épuré
+const calendlyEmbed = `${SITE.calendly}?hide_gdpr_banner=1&primary_color=2138a6`;
+---
+
+<Base title={title} description={description}>
+  <div class="hero" style="padding-bottom:1rem">
+    <div class="wrap">
+      <p class="eyebrow">Appel découverte</p>
+      <h1>Choisissez votre créneau, on se parle</h1>
+      <p class="lead">
+        20 minutes en visio, gratuites et sans engagement, directement avec
+        l'auditeur. Au programme&nbsp;: un premier regard sur votre site, vos
+        obligations réelles, les offres adaptées à votre situation — puis un
+        <strong> devis précis sous 48&nbsp;h</strong>.
+      </p>
+    </div>
+  </div>
+
+  <section style="padding-top:0.5rem" aria-labelledby="agenda-titre">
+    <div class="wrap">
+      <h2 id="agenda-titre" class="visually-hidden">Prendre rendez-vous en ligne</h2>
+      <div class="calendly-frame">
+        <iframe
+          src={calendlyEmbed}
+          title="Prise de rendez-vous en ligne — appel découverte de 20 minutes (service Calendly)"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="note" style="margin-top:1.5rem; max-width:var(--w-prose)">
+        <p style="margin:0">
+          Le module de réservation ci-dessus est fourni par un service tiers
+          (Calendly). S'il ne s'affiche pas ou s'il ne vous convient pas, vous
+          pouvez aussi&nbsp;:
+          <a href={SITE.calendly}>ouvrir la page de réservation dans un nouvel onglet</a>,
+          m'écrire à
+          <a href={`mailto:${SITE.auditeur.email}`}>{SITE.auditeur.email}</a>
+          ou m'appeler au
+          <a href={`tel:${SITE.auditeur.telephoneHref}`}>{SITE.auditeur.telephone}</a> —
+          je vous proposerai des créneaux par retour.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" aria-labelledby="deroule-titre">
+    <div class="wrap">
+      <h2 id="deroule-titre">Comment se passe l'appel&nbsp;?</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>1. Votre situation</h3>
+          <p>
+            Votre activité, vos seuils, vos échéances&nbsp;: on vérifie
+            ensemble, simplement, si et comment l'obligation d'accessibilité
+            s'applique à vous.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2. Votre site, en direct</h3>
+          <p>
+            Je regarde votre site pendant l'appel et je vous montre deux ou
+            trois constats concrets. Vous voyez immédiatement de quoi on parle.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. La suite, chiffrée</h3>
+          <p>
+            Je vous présente les offres pertinentes pour votre cas — audit
+            complet, Pack Conformité, monitoring — et vous recevez un devis
+            précis sous 48&nbsp;h. Vous décidez ensuite, sans relance agressive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

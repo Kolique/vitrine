@@ -3,7 +3,7 @@ import { SITE, CTA_LABEL } from "../config";
 
 const path = Astro.url.pathname;
 const links = [
-  { href: "/offres/", label: "Offres & tarifs" },
+  { href: "/offres/", label: "Offres" },
   { href: "/methode/", label: "Méthode" },
   { href: "/conseils/", label: "Conseils" },
   { href: "/faq/", label: "FAQ" },
@@ -32,7 +32,7 @@ const isCurrent = (href: string) =>
           ))
         }
         <li>
-          <a class="btn btn-primary btn-nav" href={SITE.calendly}>
+          <a class="btn btn-primary btn-nav" href="/reserver/">
             {CTA_LABEL}
           </a>
         </li>

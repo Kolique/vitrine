@@ -887,6 +887,28 @@ table.data thead th {
   justify-content: space-between;
 }
 
+/* ---------- Module de rendez-vous (Calendly) ---------- */
+
+.calendly-frame {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+.calendly-frame iframe {
+  display: block;
+  width: 100%;
+  height: min(72rem, 1150px);
+  border: 0;
+}
+
+@media (min-width: 48em) {
+  .calendly-frame iframe {
+    height: 760px;
+  }
+}
+
 /* ---------- Divers ---------- */
 
 .note {

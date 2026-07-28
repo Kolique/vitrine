@@ -23,7 +23,7 @@ Presque tout se remplace dans **un seul fichier : `src/config.ts`**
 
 | Placeholder | Où | Quoi mettre |
 |---|---|---|
-| `calendly` | `src/config.ts` | l'URL de votre événement Calendly « appel découverte 20 min » |
+| `calendly` | `src/config.ts` | l'URL de votre événement Calendly « appel découverte 20 min » — elle alimente le module intégré de la page `/reserver/` et le lien de secours |
 | `auditeur.nom` | `src/config.ts` | votre prénom et nom |
 | `auditeur.region` | `src/config.ts` | votre région |
 | `auditeur.email` | `src/config.ts` | votre e-mail professionnel |
@@ -83,7 +83,8 @@ src/
   components/          ← en-tête, pied de page, bandeau CTA
   pages/               ← une page = un fichier
     index.astro          Accueil
-    offres.astro         Offres & tarifs
+    reserver.astro       Réserver (Calendly intégré + alternatives)
+    offres.astro         Offres (sur devis)
     methode.astro        Méthode en 6 étapes
     faq.astro            FAQ
     a-propos.astro       À propos
