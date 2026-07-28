@@ -26,8 +26,9 @@ const jsonLd = JSON.stringify({
       <div>
         <p class="eyebrow">Accessibilité numérique · RGAA 4.1.2</p>
         <h1>
-          L'accessibilité de votre site n'est plus optionnelle. Votre budget,
-          lui, reste raisonnable.
+          L'accessibilité de votre site est devenue
+          <span class="hl">une obligation légale</span>. Pas une raison d'y
+          laisser votre budget.
         </h1>
         <p class="lead">
           Depuis le <strong>28 juin 2025</strong>, de nombreuses entreprises
@@ -46,6 +47,7 @@ const jsonLd = JSON.stringify({
         </p>
       </div>
       <figure class="report-card" aria-hidden="true">
+        <div class="stamp">Vérifié · Signé</div>
         <div class="rc-head">
           <span>Rapport d'audit RGAA</span>
           <span>p. 12/74</span>
@@ -82,7 +84,15 @@ const jsonLd = JSON.stringify({
     </div>
   </div>
 
-  <div class="wrap">
+  <div class="strip" aria-hidden="true">
+    RGAA 4.1.2 <span>//</span> 106 critères <span>//</span> Directive 2019/882
+    <span>//</span> Ordonnance n° 2023-859 <span>//</span> En vigueur depuis le
+    28 juin 2025 <span>//</span> RGAA 4.1.2 <span>//</span> 106 critères
+    <span>//</span> Directive 2019/882 <span>//</span> Ordonnance n° 2023-859
+    <span>//</span> En vigueur depuis le 28 juin 2025
+  </div>
+
+  <div class="wrap" style="margin-top:3rem">
     <dl class="stats">
       <div class="stat">
         <dt><b>106 critères</b></dt>
@@ -101,7 +111,7 @@ const jsonLd = JSON.stringify({
 
   <section aria-labelledby="concernes-titre">
     <div class="wrap">
-      <p class="eyebrow">01 — Êtes-vous concerné&nbsp;?</p>
+      <p class="eyebrow">01 / Êtes-vous concerné&nbsp;?</p>
       <h2 id="concernes-titre">Ce que dit la loi, sans dramatiser</h2>
       <div class="grid grid-2">
         <div>
@@ -151,7 +161,7 @@ const jsonLd = JSON.stringify({
 
   <section class="section-alt" aria-labelledby="livrables-titre">
     <div class="wrap">
-      <p class="eyebrow">02 — Ce que je vous livre</p>
+      <p class="eyebrow">02 / Ce que je vous livre</p>
       <h2 id="livrables-titre">Tout ce qu'exige la réglementation, prêt à l'emploi</h2>
       <div class="grid grid-3">
         <div class="card">
@@ -202,7 +212,7 @@ const jsonLd = JSON.stringify({
 
   <section aria-labelledby="independant-titre">
     <div class="wrap">
-      <p class="eyebrow">03 — Pourquoi un indépendant</p>
+      <p class="eyebrow">03 / Pourquoi un indépendant</p>
       <h2 id="independant-titre">Le même sérieux qu'un cabinet, sans les frais de structure</h2>
       <div class="grid grid-2">
         <div>
@@ -265,7 +275,7 @@ const jsonLd = JSON.stringify({
 
   <section class="section-alt" aria-labelledby="methode-titre">
     <div class="wrap">
-      <p class="eyebrow">04 — La méthode</p>
+      <p class="eyebrow">04 / La méthode</p>
       <h2 id="methode-titre">Automatiser le répétitif, vérifier l'essentiel à la main</h2>
       <div class="grid grid-3">
         <div class="card">
